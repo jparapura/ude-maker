@@ -1,8 +1,8 @@
 #tag,program,description
-,opendoas,"lets execute commands as another user."
 ,xorg-server,"is the graphical server."
 ,xorg-xinit,"starts the graphical server."
-,git,"is a version control system."
 ,vim,"is a command line text editor."
+A,brave-bin,"is a web browser."
+A,gotop,"is a graphical system monitor for command line."
+A,signal-desktop,"is a encrypted instant messenger."
 G,costamG,"komentarz super"
-A,costamA,"komentarz super"
