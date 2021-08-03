@@ -49,9 +49,10 @@ installParu() {
 	echo "Installing Paru. Paru is an AUR helper."
 	rm -rf /tmp/paru 2>/dev/null
 	cd /tmp
-	git clone https://aur.archlinux.org/paru.git >> "$logfile" 2>&1
-	cd paru
-	chown -R "$username:wheel" /tmp/paru
+	curl -LO https://aur.archlinux.org/cgit/aur.git/snapshot/paru-bin.tar.gz >> "$logfile" 2>&1
+	tar xzvf paru-bin.tar.gz >> "$logfile" 2>&1
+	cd paru-bin
+	chown -R "$username:wheel" /tmp/paru-bin
 	loading &
 	sudo -u "$username" makepkg --noconfirm -si >> "$logfile" 2>&1
 	kill $!
@@ -126,6 +127,13 @@ addRootPrivilege() {
 	# TODO make sure variable is set
 	echo "permit persist $username as root" > /etc/doas.conf
 	sed -i "/# boyjaro/d" /etc/sudoers
+	# permission below will be changed to version without
+	# NOPASSWD in finish function
+	echo "%wheel ALL=(ALL) NOPASSWD: ALL    # boyjaro" >> /etc/sudoers
+}
+
+finish() {
+	sed -i "/# boyjaro/d" /etc/sudoers
 	echo "%wheel ALL=(ALL) ALL    # boyjaro" >> /etc/sudoers
 }
 
@@ -135,3 +143,4 @@ addUser
 addRootPrivilege
 installParu
 mainInstallation
+finish
