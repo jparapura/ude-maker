@@ -47,7 +47,7 @@ beforeInstallPreparation() {
 installParu() {
 	[ -f "/usr/bin/paru" ] && return 0
 	echo "Installing Paru. Paru is an AUR helper."
-	rm -rf /tmp/paru 2>/dev/null
+	rm -rf /tmp/paru 2> /dev/null
 	cd /tmp
 	curl -LO https://aur.archlinux.org/cgit/aur.git/snapshot/paru-bin.tar.gz >> "$logfile" 2>&1
 	tar xzvf paru-bin.tar.gz >> "$logfile" 2>&1
@@ -57,6 +57,16 @@ installParu() {
 	sudo -u "$username" makepkg --noconfirm -si >> "$logfile" 2>&1
 	kill $!
 	cd 
+
+	# alternatively paru could be compiled from the source
+	# but it takes much longer. if you don't care, compilation
+	# from the source can be done as so:
+
+	# curl -LO https://aur.archlinux.org/cgit/aur.git/snapshot/paru.tar.gz >> "$logfile" 2>&1
+	# tar xzvf paru.tar.gz >> "$logfile" 2>&1
+	# cd paru
+	# chown -R "$username:wheel" /tmp/paru
+	# sudo -u "$username" makepkg --noconfirm -si >> "$logfile" 2>&1
 }
 
 addUser() {
@@ -135,6 +145,7 @@ addRootPrivilege() {
 finish() {
 	sed -i "/# boyjaro/d" /etc/sudoers
 	echo "%wheel ALL=(ALL) ALL    # boyjaro" >> /etc/sudoers
+	# TODO delete go folder in user's home folder
 }
 
 getUserAndPassword
