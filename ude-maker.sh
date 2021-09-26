@@ -10,6 +10,7 @@
 
 #progsfile="progs.csv"
 #[ -z "$progsfile" ] || progsfile="http://192.168.21.100/progs.csv"
+# TODO consider changing name to progsurl
 progsfile="http://192.168.21.100/progs.csv"
 dotfilesRepo="https://github.com/tangens90/uniform-desktop-environment.git"
 logfile="/root/log.log"
@@ -124,7 +125,11 @@ mainInstallation() {
 	#([ -f "$progsfile" ] && cp "$progsfile" /tmp/progs.csv) || curl -Ls "$progsfile" | tail -n +2  > /tmp/prog.csv
 	# TODO poprawić to miejsce
 	#([ -f "$progsfile" ] && sed -E "/^#/d" "$progsfile" > /tmp/progs.csv) || curl -Ls "$progsfile" | tail -n +2  > /tmp/progs.csv
-	curl -Ls "$progsfile" | tail -n +2  > /tmp/progs.csv
+	if [ -e "progs.csv" ]; then
+		cat progs.csv | tail -n +2 > /tmp/progs.csv
+	else
+		curl -Ls "$progsfile" | tail -n +2 > /tmp/progs.csv
+	fi
 	progsNo=$(cat /tmp/progs.csv | wc -l)
 	n=0
 	while IFS="," read tag program description; do
