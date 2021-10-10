@@ -95,20 +95,22 @@ unInstallPackage() {
 
 aurInstall() { \
 	printf "($n of $progsNo) \tInstalling $1 from AUR.\n"
-	printf "\t\t$1 $2\n"
+	printf "\t\t$1 - $2\n"
 
 	loading &
 	sudo -u "$username" paru -S --noconfirm "$1" >> "$logfile" 2>&1
 	kill $!
 }
 
-# not tested TODO
 gitInstall() {
-# poprawić adres remote repo i lokalizacje local repo
+	printf "($n of $progsNo) \tInstalling $1 using git.\n"
+	printf "\t\t$1 - $2\n"
+
 	loading &
-	sudo -u ${username} git clone https://github.com/tangens90/dwm.git /home/${username}/.local/src/dwm > /dev/null 2>&1
+	progname=$(basename "$1" .git)
+	sudo -u ${username} git clone "$1" /home/${username}/.local/src/${progname} > /dev/null 2>&1
 # poprawić na jakiś rodzaj kompilacji
-	cd /home/${username}/.local/src/dwm
+	cd /home/${username}/.local/src/${progname}
 	make clean install > /dev/null 2>&1
 	cd
 	kill $!
@@ -116,7 +118,7 @@ gitInstall() {
 
 pacmanInstall() {
 	printf "($n of $progsNo) \tInstalling $1 from the official repository.\n"
-	printf "\t\t$1 $2\n"
+	printf "\t\t$1 - $2\n"
 
 	installPackage "$1"
 }
