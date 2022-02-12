@@ -128,9 +128,12 @@ gitInstall() {
 
 	loading &
 	progname=$(basename "$1" .git)
-	sudo -u ${username} git clone "$1" /home/${username}/.local/src/${progname} > /dev/null 2>&1
+    sudo -u ${username} mkdir -p /home/${username}/.local/src
+	cd $_
+
+	sudo -u ${username} git clone "$1" > /dev/null 2>&1
+    cd ${progname}
 # poprawić na jakiś rodzaj kompilacji
-	cd /home/${username}/.local/src/${progname}
 	make clean install > /dev/null 2>&1
 	cd
 	kill $!
@@ -144,14 +147,17 @@ pacmanInstall() {
 }
 
 mainInstallation() {
+    requireUserAndPass
+
 	#([ -f "$progsfile" ] && cp "$progsfile" /tmp/progs.csv) || curl -Ls "$progsfile" | tail -n +2  > /tmp/prog.csv
 	# TODO poprawić to miejsce
 	#([ -f "$progsfile" ] && sed -E "/^#/d" "$progsfile" > /tmp/progs.csv) || curl -Ls "$progsfile" | tail -n +2  > /tmp/progs.csv
-	if [ -e "progs.csv" ]; then
-		cat progs.csv | tail -n +2 > /tmp/progs.csv
-	else
-		curl -Ls "$progsfile" | tail -n +2 > /tmp/progs.csv
-	fi
+	# if [ -e "progs.csv" ]; then
+	# 	# cat progs.csv | tail -n +2 > /tmp/progs.csv
+	# else
+	# 	curl -Ls "$progsfile" | tail -n +2 > /tmp/progs.csv
+	# fi
+    cat progs.csv | sed '/^#/d' > /tmp/progs.csv
 	progsNo=$(cat /tmp/progs.csv | wc -l)
 	n=0
 	while IFS="," read tag program description; do
@@ -205,8 +211,10 @@ addRootPrivilege() {
 }
 
 finish() {
-	sed -i "/# ude-maker/d" /etc/sudoers
-	echo "%wheel ALL=(ALL) ALL    # ude-maker" >> /etc/sudoers
+    echo "xdxd"
+    # TODO do i really need to disable sudo?
+	# sed -i "/# ude-maker/d" /etc/sudoers
+	# echo "%wheel ALL=(ALL) ALL    # ude-maker" >> /etc/sudoers
 	# TODO delete go folder in user's home folder
 }
 
@@ -217,4 +225,4 @@ addRootPrivilege
 installParu
 mainInstallation
 pullDotfilesRepo
-finish
+# finish
