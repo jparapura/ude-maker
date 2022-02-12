@@ -33,6 +33,13 @@ loading() {
 	done
 }
 
+requireUserAndPass() {
+    if [ -z "$username" ] || [ -z $password ]; then
+        getUserAndPassword
+        requireUserAndPass
+    fi
+}
+
 getUserAndPassword() {
 	# TODO make sure these are valid
 	# TODO set default username to ude
@@ -57,6 +64,8 @@ beforeInstallPreparation() {
 
 installParu() {
 	[ -f "/usr/bin/paru" ] && return 0
+    requireUserAndPass
+
 	echo "Installing Paru. Paru is an AUR helper."
 	rm -rf /tmp/paru 2> /dev/null
 	cd /tmp
@@ -81,6 +90,8 @@ installParu() {
 }
 
 addUser() {
+    requireUserAndPass
+
 	useradd -mg wheel "$username"
 	echo "$username:$password" | chpasswd
 }
@@ -99,6 +110,8 @@ unInstallPackage() {
 }
 
 aurInstall() { \
+    requireUserAndPass
+
 	printf "($n of $progsNo) \tInstalling $1 from AUR.\n"
 	printf "\t\t$1 - $2\n"
 
@@ -108,6 +121,8 @@ aurInstall() { \
 }
 
 gitInstall() {
+    requireUserAndPass
+
 	printf "($n of $progsNo) \tInstalling $1 using git.\n"
 	printf "\t\t$1 - $2\n"
 
@@ -163,6 +178,8 @@ mainInstallation() {
 }
 
 pullDotfilesRepo() {
+    requireUserAndPass
+
 	echo "Downloading dotfiles repo."
 	loading &
 	echo ".cfg" >> /home/${username}/.gitignore
@@ -177,6 +194,8 @@ pullDotfilesRepo() {
 }
 
 addRootPrivilege() {
+    requireUserAndPass
+
 	# TODO make sure variable is set
 	echo "permit persist $username as root" > /etc/doas.conf
 	sed -i "/# ude-maker/d" /etc/sudoers
