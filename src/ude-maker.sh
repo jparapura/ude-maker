@@ -16,8 +16,6 @@
 
 #progsfile="progs.csv"
 #[ -z "$progsfile" ] || progsfile="http://192.168.21.100/progs.csv"
-# TODO consider changing name to progsurl
-progsfile="http://192.168.21.100/progs.csv"
 dotfilesRepo="https://github.com/tangens90/uniform-desktop-environment.git"
 logfile="/root/log.log"
 
@@ -153,14 +151,6 @@ pacmanInstall() {
 mainInstallation() {
     requireUserAndPass
 
-	#([ -f "$progsfile" ] && cp "$progsfile" /tmp/progs.csv) || curl -Ls "$progsfile" | tail -n +2  > /tmp/prog.csv
-	# TODO poprawić to miejsce
-	#([ -f "$progsfile" ] && sed -E "/^#/d" "$progsfile" > /tmp/progs.csv) || curl -Ls "$progsfile" | tail -n +2  > /tmp/progs.csv
-	# if [ -e "progs.csv" ]; then
-	# 	# cat progs.csv | tail -n +2 > /tmp/progs.csv
-	# else
-	# 	curl -Ls "$progsfile" | tail -n +2 > /tmp/progs.csv
-	# fi
 	cd ${SCRIPT_DIR}
     cat progs.csv | sed '/^#/d' | sed -r '/^\s*$/d' > /tmp/progs.csv
 	progsNo=$(cat /tmp/progs.csv | wc -l)
@@ -196,7 +186,6 @@ pullDotfilesRepo() {
 	echo ".cfg" >> /home/${username}/.gitignore
 	git clone --bare ${dotfilesRepo} /home/${username}/.cfg > /dev/null 2>&1
 	rm /home/${username}/.bash* > /dev/null 2>&1
-	# TODO consider config alias for what's below
 	git --git-dir=/home/${username}/.cfg/ --work-tree=/home/${username} checkout
 	git --git-dir=/home/${username}/.cfg/ --work-tree=/home/${username} config --local status.showUntrackedFiles no
 	sudo chown ${username}:wheel -R /home/${username} 
@@ -207,10 +196,9 @@ pullDotfilesRepo() {
 addRootPrivilege() {
     requireUserAndPass
 
-	# TODO make sure variable is set
 	echo "permit persist $username as root" > /etc/doas.conf
 	sed -i "/# ude-maker/d" /etc/sudoers
-	# permission below will be changed to version without
+	# TODO permission below should be changed to version without
 	# NOPASSWD in finish function
 	echo "%wheel ALL=(ALL) NOPASSWD: ALL    # ude-maker" >> /etc/sudoers
 }
