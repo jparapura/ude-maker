@@ -1,50 +1,70 @@
-# tag,program,description
-# TODO fzf
+## tag,program,description
+
+## minimal to run Xorg
 ,xorg-server,"the graphical server."
 ,xorg-xinit,"starts the graphical server."
-,libxft,"todo"
-,libxinerama,"todo"
-,ttf-ubuntu-font-family,"todo"
-,xf86-video-intel,"todo"
-,ttf-linux-libertine,"todo"
-# ,xorg-xrandr,"utility for managing outputs of the screens."
-# ,xorg-xmodmap,"utility for modifying keymaps and pointer button mappings in Xorg."
-# ,xorg-setxkbmap,"utility for resetting changes made by xmodmap."
-# ,python,"interpreted, interactive, object-oriented programming language"
-# ,python-pip,"package manager for Python."
-# ,jdk-openjdk,"Java Development Kit."
-# ,jre-openjdk,"Java Runtime Environment."
-# ,mono,"project to create a .NET Framework-compatible set of tools."
-,vim,"command line text editor."
-,gvim,"graphical version of Vim. Installing to enable copy/paste between Vim and everything else."
-,openssh,"implementation of Secure Shell protocol."
-# ,sxiv,"lightweight image viewer."
-,sxhkd,"hotkey daemon."
-# ,vsftpd,"FTP server."
-# ,tmux,"allows to have multiple terminals in a single screen."
-# ,ranger,"text-based file manager."
-# ,pcmanfm,"GUI file manager."
-# ,xdg-user-dirs,"tool for managing directiories like desktop folder."
-# ,qutebrowser,"web browser with vi-styled keybindings."
-# ,zathura,"document viewer with vi-styled keybindings."
-# ,zathura-pdf-mupdf,"EPUB and PDF dependency for zathura."
-# ,xautolock,"utility to block the computer after some time of inactivity."
-,bc,"terminal calulator."
-# ,flameshot,"program for taking screenshots."
-# ,unzip,"program for unpacking .zip files."
-# ,unrar,"program for unpacking .rar files."
-# ,texlive-most,"LaTeX which makes beautiful pdf-s."
-# ,traceroute,"tool to display the path of packets across an IP network."
-# ,mpv,"media player."
-# ,pandoc,"document converter."
-# ,qbittorrent,"torrent client."
-# ,gimp,"image editor."
-# ,figlet,"program for making large letters out of ordinary text"
-A,brave-bin,"fast web browser with adblock built-in."
-# A,gotop,"graphical system monitor for command line."
-# A,signal-desktop,"encrypted instant messenger."
-# A,f3,"tool for checking flash card capacity."
-# A,chromium-widevine,"installed to fix not working Spotify in qutebrowser."
+,libxft,"font drawing library for X."
+,libxinerama,"provides support for extending a desktop across multiple displays."
+,ttf-ubuntu-font-family,"Ubuntu font family."
+,ttf-linux-libertine,"fonts with unicode coverage"
 G,https://github.com/tangens90/dwm,"window mananger."
 G,https://github.com/tangens90/st,"terminal emulator."
 G,https://github.com/tangens90/dmenu,"manager for user defined menus."
+
+## useful Xorg utils
+,xorg-xsetroot,"allows to set value to dwm bar."
+,xorg-xrandr,"utility for managing outputs of the screens."
+,xorg-xmodmap,"utility for modifying keymaps and pointer button mappings in Xorg."
+,xorg-setxkbmap,"utility for resetting changes made by xmodmap."
+,xautolock,"utility to block the computer after some time of inactivity."
+
+## tools for configuration
+,xdg-user-dirs,"tool for managing directiories like desktop folder."
+
+## regular usage
+,vim,"command line text editor."
+,gvim,"graphical version of Vim. Installing to enable copy/paste between Vim and everything else."
+,openssh,"implementation of Secure Shell protocol."
+,sxiv,"lightweight image viewer."
+,sxhkd,"hotkey daemon."
+,tmux,"allows to have multiple terminals in a single screen."
+,ranger,"text-based file manager."
+,pcmanfm,"GUI file manager."
+,bc,"terminal calulator."
+,unzip,"program for unpacking .zip files."
+,unrar,"program for unpacking .rar files."
+,mpv,"media player."
+,zathura,"document viewer with vi-styled keybindings."
+,zathura-pdf-mupdf,"EPUB and PDF dependency for zathura."
+,gimp,"image editor."
+,flameshot,"program for taking screenshots."
+,qbittorrent,"torrent client."
+,fzf,"a general-purpose command-line fuzzy finder."
+A,signal-desktop,"encrypted instant messenger."
+A,gotop,"graphical system monitor for command line."
+
+## web browsers (pick the ones you like)
+A,brave-bin,"fast web browser with adblock built-in."
+# ,qutebrowser,"web browser with vi-styled keybindings."
+# A,chromium-widevine,"installed to fix not working Spotify in qutebrowser."
+
+## document editing
+# ,texlive-most,"LaTeX which makes beautiful pdf-s."
+# ,pandoc,"document converter."
+
+## Python
+,python,"interpreted, interactive, object-oriented programming language"
+,python-pip,"package manager for Python."
+
+## Java
+,jdk-openjdk,"Java Development Kit."
+,jre-openjdk,"Java Runtime Environment."
+
+## C#
+,mono,"project to create a .NET Framework-compatible set of tools."
+
+## misc
+# ,vsftpd,"FTP server."
+# ,traceroute,"tool to display the path of packets across an IP network."
+# ,figlet,"program for making large letters out of ordinary text."
+# A,f3,"tool for checking flash card capacity."
