@@ -162,7 +162,7 @@ mainInstallation() {
 	# 	curl -Ls "$progsfile" | tail -n +2 > /tmp/progs.csv
 	# fi
 	cd ${SCRIPT_DIR}
-    cat progs.csv | sed '/^#/d' > /tmp/progs.csv
+    cat progs.csv | sed '/^#/d' | sed -r '/^\s*$/d' > /tmp/progs.csv
 	progsNo=$(cat /tmp/progs.csv | wc -l)
 	n=0
 	while IFS="," read tag program description; do
