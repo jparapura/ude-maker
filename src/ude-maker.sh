@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# TODO fix tabs
 # TODO add simulation mode where only logs are
 # displayed
 

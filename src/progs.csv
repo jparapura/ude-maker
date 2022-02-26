@@ -1,10 +1,12 @@
 # tag,program,description
-# TODO czcionki ttf-hack i ttf-libertine
-# TODO libxft libxinerama
-# TODO compile suckless utils
 # TODO fzf
 ,xorg-server,"the graphical server."
 ,xorg-xinit,"starts the graphical server."
+,libxft,"todo"
+,libxinerama,"todo"
+,ttf-ubuntu-font-family,"todo"
+,xf86-video-intel,"todo"
+,ttf-linux-libertine,"todo"
 # ,xorg-xrandr,"utility for managing outputs of the screens."
 # ,xorg-xmodmap,"utility for modifying keymaps and pointer button mappings in Xorg."
 # ,xorg-setxkbmap,"utility for resetting changes made by xmodmap."
