@@ -21,6 +21,9 @@ progsfile="http://192.168.21.100/progs.csv"
 dotfilesRepo="https://github.com/tangens90/uniform-desktop-environment.git"
 logfile="/root/log.log"
 
+# TODO understand this
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+
 [ -f "$logfile" ] && rm "$logfile"
 
 loading() {
@@ -77,7 +80,7 @@ installParu() {
 	loading &
 	sudo -u "$username" makepkg --noconfirm -si >> "$logfile" 2>&1
 	kill $!
-	cd 
+	cd ${SCRIPT_DIR}
 
 	# alternatively paru could be compiled from the source
 	# but it takes much longer. if you don't care, compilation
@@ -136,7 +139,7 @@ gitInstall() {
     cd ${progname}
 # poprawić na jakiś rodzaj kompilacji
 	make clean install > /dev/null 2>&1
-	cd
+	cd ${SCRIPT_DIR}
 	kill $!
 }
 
@@ -158,6 +161,7 @@ mainInstallation() {
 	# else
 	# 	curl -Ls "$progsfile" | tail -n +2 > /tmp/progs.csv
 	# fi
+	cd ${SCRIPT_DIR}
     cat progs.csv | sed '/^#/d' > /tmp/progs.csv
 	progsNo=$(cat /tmp/progs.csv | wc -l)
 	n=0
