@@ -16,10 +16,16 @@ G,https://github.com/tangens90/dmenu,"manager for user defined menus."
 ,xorg-xrandr,"utility for managing outputs of the screens."
 ,xorg-xmodmap,"utility for modifying keymaps and pointer button mappings in Xorg."
 ,xorg-setxkbmap,"utility for resetting changes made by xmodmap."
+,xorg-xinput,"utility to configure and test X input devices."
+,xorg-xdpyinfo,"utility to display information about X."
+,xorg-xset,"utility to turn the screen off."
+,xorg-xrdb,"utility to configure X using .Xresources file."
+,xcompmgr,"utility for rendering drop shadows."
 ,xautolock,"utility to block the computer after some time of inactivity."
+,xdotool,"automation tool for X."
 
-## tools for configuration
-,xdg-user-dirs,"tool for managing directiories like desktop folder."
+## fonts
+,gnu-free-fonts,"fonts package"
 
 ## regular usage
 ,vim,"command line text editor."
@@ -33,6 +39,8 @@ G,https://github.com/tangens90/dmenu,"manager for user defined menus."
 ,bc,"terminal calulator."
 ,unzip,"program for unpacking .zip files."
 ,unrar,"program for unpacking .rar files."
+,p7zip,"program for unpacking .7zip files."
+,ntp,"a Network Time Protocol daemon."
 ,mpv,"media player."
 ,zathura,"document viewer with vi-styled keybindings."
 ,zathura-pdf-mupdf,"EPUB and PDF dependency for zathura."
@@ -40,6 +48,11 @@ G,https://github.com/tangens90/dmenu,"manager for user defined menus."
 ,flameshot,"program for taking screenshots."
 ,qbittorrent,"torrent client."
 ,fzf,"a general-purpose command-line fuzzy finder."
+,feh,"image viewer, can be used to set wallpaper."
+,dunst,"a notification server"
+,libnotify,"library for sending desktop notifications"
+,python-pywal,"tool for generating colorschemes from wallpaper""
+,neofetch,"to show off your Arch rice"
 A,signal-desktop,"encrypted instant messenger."
 A,gotop,"graphical system monitor for command line."
 
@@ -52,19 +65,36 @@ A,brave-bin,"fast web browser with adblock built-in."
 # ,texlive-most,"LaTeX which makes beautiful pdf-s."
 # ,pandoc,"document converter."
 
+## audio
+,pulseaudio,"a sound server."
+,pavucontrol,"GUI controller for PulseAudio."
+
+## tools for configuration
+,xdg-user-dirs,"tool for managing directiories like desktop folder."
+
 ## Python
 ,python,"interpreted, interactive, object-oriented programming language"
 ,python-pip,"package manager for Python."
+
+## Haskell
+,ghc,"Haskell compiler."
+,ghc-static,"to resolve ghc build errors."
 
 ## Java
 ,jdk-openjdk,"Java Development Kit."
 ,jre-openjdk,"Java Runtime Environment."
 
 ## C#
-,mono,"project to create a .NET Framework-compatible set of tools."
+,mono,"to compile single C# files."
+,dotnet-runtime,"to run dotnet core projects."
+,dotnet-sdk,"to compile dotnet core projects."
+
 
 ## misc
 # ,vsftpd,"FTP server."
 # ,traceroute,"tool to display the path of packets across an IP network."
 # ,figlet,"program for making large letters out of ordinary text."
+# ,cool-retro-term,"terminal emulator which mimics the old cathode display."
 # A,f3,"tool for checking flash card capacity."
+# A,cmatrix,"scrolling 'Matrix'-like screen."
+# A,aisleriot,"card games."
